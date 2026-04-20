@@ -612,7 +612,7 @@
 
   <!-- ── Navigation ──────────────────────────────────── -->
   <nav>
-    <a class="nav-logo" href="#hero">G<span>.</span>AMORIN</a>
+    <a class="nav-logo" href="#hero">G<span>.</span>AMORIM</a>
     <ul class="nav-links">
       <li><a href="#about">sobre</a></li>
       <li><a href="#projects">projetos</a></li>
@@ -658,7 +658,7 @@
           Me interesso por como sistemas são usados de verdade — não só como são construídos. Isso me levou a estudar Interação Humano-Computador e acessibilidade (WCAG2), tratando experiência do usuário como parte da arquitetura, não só da interface.
         </p>
         <p>
-          Hoje lidero projetos de pesquisa e desenvolvimento no <a href="https://evaslab.com.br" target="_blank">EVAS Lab</a>, onde exploro a interseção entre sistemas, inteligência artificial e interação humano-computador.
+          Hoje lidero projetos de pesquisa e desenvolvimento no <a href="https://evaslab.com.br" target="_blank">EVAS Lab</a>, onde exploro a interseção entre sistemas, inteligência artificial e comportamento humano.
         </p>
       </div>
       <div class="timeline">
@@ -755,7 +755,7 @@
     <!-- ── Contact ─────────────────────────────────────── -->
     <section id="contact">
       <span class="section-tag">// 04 — contato</span>
-      <h2>Vamos conversar?</h2>
+      <h2><span id="typewriter-contact"></span><span class="cursor">▋</span></h2>
       <p class="contact-desc">
         Aberta a colaborações em pesquisa, projetos de desenvolvimento e conversas sobre tecnologia, ciência e inovação. Se quiser trocar uma ideia, discutir um projeto ou só dizer oi, me mande uma mensagem!
       </p>
@@ -825,6 +825,28 @@
       }
     }
     setTimeout(type, 400);
+
+    const text2 = 'Você sabe onde me encontrar';
+    const el2 = document.getElementById('typewriter-contact');
+    function typeContact() {
+      let j = 0;
+      function run() {
+        if (j < text2.length) {
+          el2.textContent += text2[j++];
+          setTimeout(run, 55);
+        }
+      }
+      run();
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          typeContact();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(document.getElementById('typewriter-contact'));
   </script>
 </body>
 </html>
