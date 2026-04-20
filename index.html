@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gabrielly Trajano Amorin</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='none'%3E%3Cpath d='M7 13h22l-2.5 13a2 2 0 01-2 1.7H11.5a2 2 0 01-2-1.7L7 13z' stroke='%23f472b6' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M29 16h2a3 3 0 010 6h-2' stroke='%2393c5fd' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M13 10 Q14 7.5 13 5' stroke='%2393c5fd' stroke-width='1.2' stroke-linecap='round' opacity='.7'/%3E%3Cpath d='M18 10 Q19 7 18 4.5' stroke='%23f472b6' stroke-width='1.2' stroke-linecap='round' opacity='.7'/%3E%3Cpath d='M23 10 Q24 7.5 23 5' stroke='%2393c5fd' stroke-width='1.2' stroke-linecap='round' opacity='.7'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2307080f'/%3E%3Ctext x='16' y='21' font-family='Georgia,serif' font-size='18' font-weight='bold' fill='%23f472b6' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -576,6 +576,18 @@
       opacity: 0.8;
     }
 
+    /* ─── Typewriter cursor ─────────────────────────────── */
+    .cursor {
+      display: inline-block;
+      color: var(--pink);
+      animation: blink 1s step-end infinite;
+      margin-left: 1px;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
     /* ─── Glitch name effect ─────────────────────────────── */
     @keyframes flicker {
       0%, 97%, 100% { opacity: 1; }
@@ -613,7 +625,7 @@
 
     <!-- ── Hero ──────────────────────────────────────── -->
     <section id="hero">
-      <p class="hero-eyebrow">// iniciando sistema_</p>
+      <p class="hero-eyebrow"><span id="typewriter"></span><span class="cursor">▋</span></p>
       <div class="hero-top">
         <div class="hero-top-left">
           <h1 class="hero-name">Gabrielly<br>Trajano Amorin</h1>
@@ -626,7 +638,7 @@
       <div class="h-line"></div>
       <p class="hero-desc">
         Cientista da computação na fronteira entre tecnologia, pesquisa e empreendedorismo.
-        Fundadora do <a href="https://evaslab.com.br" target="_blank" style="color:var(--pink);border-bottom:1px solid var(--pink-dim);text-decoration:none;">EVAs Lab</a> — explorando os limites do que pode ser construído.
+        Fundadora do <a href="https://evaslab.com.br" target="_blank" style="color:var(--pink);border-bottom:1px solid var(--pink-dim);text-decoration:none;">EVAS Lab</a> — explorando os limites do que pode ser construído.
       </p>
       <div class="btn-group">
         <a href="#projects" class="btn btn-primary">ver projetos</a>
@@ -702,9 +714,9 @@
       <div class="card-grid">
         <div class="card">
           <div class="card-title">
-            <a href="https://evaslab.com.br" target="_blank">EVAs Academy</a>
+            <a href="https://evaslab.com.br" target="_blank">EVAS Academy</a>
           </div>
-          <div class="card-meta">PROGRAMA DE ENSINO · EVAs LAB</div>
+          <div class="card-meta">PROGRAMA DE ENSINO · EVAS LAB</div>
           <p class="card-desc">
             Iniciativa de ensino voltada para pessoas no início da jornada em TI. Ministro aulas de Engenharia de Software
             com foco em fundamentos sólidos, pensamento crítico e construção de identidade técnica — dentro da filosofia EVA:
@@ -802,5 +814,17 @@
     <p>© 2026 Gabrielly Trajano Amorin</p>
   </footer>
 
+  <script>
+    const text = '// iniciando sistema_';
+    const el = document.getElementById('typewriter');
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        el.textContent += text[i++];
+        setTimeout(type, 65);
+      }
+    }
+    setTimeout(type, 400);
+  </script>
 </body>
 </html>
